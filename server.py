@@ -35,17 +35,17 @@ def alert_me():
 	client.messages.create(
 		to = toNum,
 		from_ = fromNum,
-		body = "Alert!",
+		body = "Alert!"
 	)
 
-	global thing
-	thing = dict()
-	thing['title'] = request.json['title']
-	thing['status'] = True
+	resp = {
+	'title': request.json['title'],
+	'status': True
+	}
 
 	print "Message sent!"
 
-    return jsonify({'resp': thing})
+    return str({'resp': resp})
 
 	#--------------------
 

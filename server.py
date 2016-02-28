@@ -58,10 +58,6 @@ def alert_me():
 
 @app.route('/test', methods=['POST'])
 def testFunct():
-	if not request.json or not 'msgAlert' in request.json or not 'title' in request.json:
-        abort(400)
-	if request.json.password != password:
-		abort(400)
 	client.messages.create(
 		to = toNum,
 		from_ = fromNum,

@@ -45,7 +45,7 @@ def alert_me():
 
 	print "Message sent!"
 
-    return jsonify({'resp': resp}), 201
+    return 201
 #--------------------
 
 

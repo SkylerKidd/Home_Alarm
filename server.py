@@ -35,10 +35,12 @@ def send_alert(msgAlert):
 
 @app.route('/')
 def debug_screen():
-	return ACCOUNT_SID + " " + fromNum + toNum
+	testtt = fromNum
+	return ACCOUNT_SID + " " + testtt + toNum
 
 @app.route('/api/v1.0/alert', methods=['POST'])
 def alert_me():
+	#NOTHING HERE IS READ UNTIL RETURN. WHHYYYYYYYYYYYYYYYYYYYY
     if not request.json or not 'msgAlert' in request.json or not 'title' in request.json:
         abort(400)
 	if request.json.password != password:

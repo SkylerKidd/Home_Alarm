@@ -38,17 +38,16 @@ def alert_me():
 		body = "Alert!",
 	)
 
-	# resp = {
-	# 	'title': request.json['title'],
-	# 	'status': True
-	# }
+	resp = {
+		'title': request.json['title'],
+		'status': True
+	}
 
-	erdfgf = 1
+	print "Message sent!"
 
-	print "Message sent!", erdfgf
+    return str({'resp': "hello"})
 
-    return erdfgf #jsonify({'resp': resp}), 201
-#--------------------
+	#--------------------
 
 
 if __name__ == '__main__':

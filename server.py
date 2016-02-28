@@ -23,32 +23,17 @@ app = Flask(__name__)
 
 #--------------------
 
-def send_alert(msgAlert):
-	client.messages.create(
-		to = toNum,
-		from_ = fromNum,
-		body = msgAlert,
-	)
-
-	print "Message sent!"
-	sys.stdout.flush()
-
-@app.route('/')
-def debug_screen():
-	testtt = fromNum
-	return ACCOUNT_SID + " " + testtt + toNum
-
 @app.route('/alert', methods=['POST'])
-def testFunct():
+def send_alert():
 	client.messages.create(
 		to = toNum,
 		from_ = fromNum,
 		body = "Alert!!!"
 	)
-	status = "Alert!"
+	status = "Succesfully sent!"
 	return jsonify({'resp':{'title': request.json['title'],'status': status}})
-	#--------------------
 
+#--------------------
 
 if __name__ == '__main__':
 	port = int(os.environ.get("PORT", 5000))

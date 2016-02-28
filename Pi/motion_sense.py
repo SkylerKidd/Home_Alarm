@@ -6,9 +6,13 @@ GPIO.setmode(GPIO.BCM)
 PIR_PIN = 7
 GPIO.setup(PIR_PIN, GPIO.IN)
 
+config = {}
+execfile('settings.conf', config)
+
 data = {
     'title': 'Alarm Trip',
-    'msgAlert': 'Alert!'
+    'msgAlert': 'Alert!',
+    password = config['password']
 }
 
 try:

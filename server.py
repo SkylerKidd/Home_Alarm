@@ -38,14 +38,13 @@ def alert_me():
 		body = "Alert!",
 	)
 
-	resp = {
-		'title': request.json['title'],
-		'status': True
-	}
+	thing = dict()
+	thing['title'] = request.json['title']
+	thing['status'] = True
 
 	print "Message sent!"
 
-    return str({'resp': resp})
+    return jsonify({'resp': thing})
 
 	#--------------------
 

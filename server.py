@@ -27,15 +27,16 @@ app = Flask(__name__)
 def send_alert():
 	# TODO - Password checking
 	posted_data = request.get_json()
-	if posted_data.password != password:
-		abort(400)
+
+	#if posted_data.password != password:
+	#	abort(400)
 	client.messages.create(
 		to = toNum,
 		from_ = fromNum,
 		body = "Alert!!!"
 	)
 	status = "Succesfully sent!"
-	return jsonify({'resp':{'title': request.json['title'],'status': status}})
+	return jsonify({'resp':{'title': request.json['title'],'status': posted_data}})
 
 #--------------------
 

@@ -38,7 +38,7 @@ def debug_screen():
 	testtt = fromNum
 	return ACCOUNT_SID + " " + testtt + toNum
 
-@app.route('/api/v1.0/alert', methods=['POST'])
+@app.route('/api/alert', methods=['POST'])
 def alert_me():
 	#NOTHING HERE IS READ UNTIL RETURN. WHHYYYYYYYYYYYYYYYYYYYY
     if not request.json or not 'msgAlert' in request.json or not 'title' in request.json:
@@ -58,6 +58,15 @@ def alert_me():
 
 @app.route('/test', methods=['POST'])
 def testFunct():
+	if not request.json or not 'msgAlert' in request.json or not 'title' in request.json:
+        abort(400)
+	if request.json.password != password:
+		abort(400)
+	client.messages.create(
+		to = toNum,
+		from_ = fromNum,
+		body = request.json.msgAlert
+	)
 	status = "Woo!"
 	return jsonify({'resp':{'title': request.json['title'],'status': status}})
 	#--------------------

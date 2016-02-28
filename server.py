@@ -2,7 +2,7 @@ from twilio.rest import TwilioRestClient
 from flask import Flask, jsonify
 import os
 
-if ACCOUNT_SID in os.environ:
+if 'ACCOUNT_SID' in os.environ:
 	ACCOUNT_SID = os.environ['ACCOUNT_SID']
 	AUTH_TOKEN = os.environ['AUTH_TOKEN']
 	password = os.environ['password']

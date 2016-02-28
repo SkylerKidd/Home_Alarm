@@ -45,7 +45,7 @@ def alert_me():
 
 	print "Message sent!"
 
-    return str({'resp': "hello"})
+    return str({'resp': resp})
 
 	#--------------------
 

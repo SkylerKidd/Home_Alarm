@@ -1,5 +1,5 @@
 from twilio.rest import TwilioRestClient
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, abort
 import os
 
 if 'ACCOUNT_SID' in os.environ:
@@ -46,7 +46,7 @@ def alert_me():
 
 	send_alert(request.json.msgAlert)
 
-    return jsonify({'resp':{'title': request.json['title'],'status': True}}), 201
+    return jsonify({'resp':{'title': request.json['title'],'status': True}})
 
 	#--------------------
 

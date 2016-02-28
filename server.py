@@ -56,7 +56,7 @@ def alert_me():
 
     return jsonify({'resp':{'title': request.json['title'],'status': True}})
 
-@app.route('test', method=['POST'])
+@app.route('test', methods=['POST'])
 def testFunct():
 	status = "Woo!"
 	return jsonify({'resp':{'title': request.json['title'],'status': status}})

@@ -55,7 +55,7 @@ def alert_me():
 	#os.system("send_alert.py " + str(msgAlert))
 	#send_alert(request.json.msgAlert)
 
-    return jsonify({'resp':{'title': request.json['title'],'status': status}})
+    return jsonify({'resp':{'title': request.json['title'],'status': True}})
 
 	#--------------------
 

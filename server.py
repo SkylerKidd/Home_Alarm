@@ -33,6 +33,10 @@ def send_alert(msgAlert):
 	print "Message sent!"
 	sys.stdout.flush()
 
+@app.route('/')
+def debug_screen():
+	return ACCOUNT_SID + " " + fromNum
+
 @app.route('/api/v1.0/alert', methods=['POST'])
 def alert_me():
     if not request.json or not 'msgAlert' in request.json or not 'title' in request.json:

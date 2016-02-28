@@ -12,7 +12,7 @@ execfile('settings.conf', config)
 data = {
     'title': 'Alarm Trip',
     'msgAlert': 'Alert!',
-    password = config['password']
+    'password': config['password']
 }
 
 try:

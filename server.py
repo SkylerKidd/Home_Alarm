@@ -39,6 +39,7 @@ def alert_me():
 	)
 
 	print "Message sent!"
+	sys.stdout.flush()
 
     return jsonify({'resp':{'title': request.json['title'],'status': True}})
 

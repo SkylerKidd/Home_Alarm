@@ -2,9 +2,6 @@ from twilio.rest import TwilioRestClient
 from flask import Flask, jsonify
 import os
 
-config = {}
-execfile("settings.conf", config)
-
 if ACCOUNT_SID in os.environ:
 	ACCOUNT_SID = os.environ['ACCOUNT_SID']
 	AUTH_TOKEN = os.environ['AUTH_TOKEN']
@@ -12,9 +9,14 @@ if ACCOUNT_SID in os.environ:
 	toMess = os.environ["to"],
 	fromMess = os.environ["from"],
 else:
+	try:
+		config = {}
+		execfile("settings.conf", config)
+	except Exception:
+		print "No local config file"
 	ACCOUNT_SID = config["ACCOUNT_SID"]
 	AUTH_TOKEN = config["AUTH_TOKEN"]
-	password = os.environ['password']
+	password = config['password']
 	toMess = config["to"],
 	fromMess = config["from"],
 

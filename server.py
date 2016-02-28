@@ -23,11 +23,11 @@ app = Flask(__name__)
 
 #--------------------
 
-def send_alert():
+def send_alert(msgAlert):
 	client.messages.create(
 		to = toNum,
 		from_ = fromNum,
-		body = "Alert!",
+		body = msgAlert,
 	)
 
 	print "Message sent!"
@@ -35,18 +35,16 @@ def send_alert():
 
 @app.route('/api/v1.0/alert', methods=['POST'])
 def alert_me():
-    if not request.json or not 'title' in request.json:
+    if not request.json or not 'msgAlert' in request.json:
         abort(400)
 	if request.json.password != password:
 		abort(400)
 
-	send_alert()
+	send_alert(request.json.msgAlert)
 
     return jsonify({'resp':{'title': request.json['title'],'status': True}})
 
 	#--------------------
-
-
 
 
 if __name__ == '__main__':

@@ -43,16 +43,19 @@ def alert_me():
         abort(400)
 	if request.json.password != password:
 		abort(400)
-
-	client.messages.create(
-		to = toNum,
-		from_ = fromNum,
-		body = request.json.msgAlert
-	)
+	try:
+		client.messages.create(
+			to = toNum,
+			from_ = fromNum,
+			body = request.json.msgAlert
+		)
+		status = 'Success'
+	catch Exception:
+		status = Exception.message
 	#os.system("send_alert.py " + str(msgAlert))
 	#send_alert(request.json.msgAlert)
 
-    return jsonify({'resp':{'title': request.json['title'],'status': True}})
+    return jsonify({'resp':{'title': request.json['title'],'status': status}})
 
 	#--------------------
 

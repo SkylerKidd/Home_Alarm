@@ -6,19 +6,16 @@ if 'ACCOUNT_SID' in os.environ:
 	ACCOUNT_SID = os.environ['ACCOUNT_SID']
 	AUTH_TOKEN = os.environ['AUTH_TOKEN']
 	password = os.environ['password']
-	toMess = os.environ["to"],
-	fromMess = os.environ["from"],
+	toNum = os.environ["toNum"],
+	fromNum = os.environ["fromNum"],
 else:
-	try:
-		config = {}
-		execfile("settings.conf", config)
-	except Exception:
-		print "No local config file"
+	config = {}
+	execfile("settings.conf", config)
 	ACCOUNT_SID = config["ACCOUNT_SID"]
 	AUTH_TOKEN = config["AUTH_TOKEN"]
 	password = config['password']
-	toMess = config["to"],
-	fromMess = config["from"],
+	toNum = config["toNum"],
+	fromNum = config["fromNum"],
 
 client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
 
@@ -27,15 +24,15 @@ app = Flask(__name__)
 #--------------------
 
 @app.route('/api/v1.0/alert', methods=['POST'])
-def create_task():
+def alert_me():
     if not request.json or not 'title' in request.json:
         abort(400)
 	if request.json.password != password:
 		abort(400)
 
 	client.messages.create(
-		to = toMess,
-		from_ = fromMess,
+		to = toNum,
+		from_ = fromNum,
 		body = "Alert!",
 	)
 

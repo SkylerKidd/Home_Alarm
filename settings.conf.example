@@ -1,5 +1,5 @@
 ACCOUNT_SID = "[AccountSID]"
 AUTH_TOKEN = "[AuthToken]"
-from = "[yourTwilioNumber]"
-to = "[yourCellNumber]"
+fromNum = "[yourTwilioNumber]"
+toNum = "[yourCellNumber]"
 password = "[yourPassword]"

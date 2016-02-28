@@ -38,6 +38,7 @@ def alert_me():
 		body = "Alert!",
 	)
 
+	global thing
 	thing = dict()
 	thing['title'] = request.json['title']
 	thing['status'] = True

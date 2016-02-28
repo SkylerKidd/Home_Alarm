@@ -23,6 +23,8 @@ app = Flask(__name__)
 
 #--------------------
 
+
+
 @app.route('/api/v1.0/alert', methods=['POST'])
 def alert_me():
     if not request.json or not 'title' in request.json:
@@ -41,12 +43,12 @@ def alert_me():
 		'status': True
 	}
 
-    return jsonify({'resp': resp}), 201
+	print "Message sent!"
 
+    return jsonify({'resp': resp}), 201
 #--------------------
 
-print "Message sent!"
 
 if __name__ == '__main__':
 	port = int(os.environ.get("PORT", 5000))
-	app.run(host='0.0.0.0', port=port)
+	app.run(host='0.0.0.0', port=port, debug=True)

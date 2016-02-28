@@ -25,6 +25,7 @@ app = Flask(__name__)
 
 @app.route('/alert', methods=['POST'])
 def send_alert():
+	# TODO - Password checking
 	client.messages.create(
 		to = toNum,
 		from_ = fromNum,

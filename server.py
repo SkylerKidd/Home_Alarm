@@ -26,7 +26,8 @@ app = Flask(__name__)
 @app.route('/alert', methods=['POST'])
 def send_alert():
 	# TODO - Password checking
-	if request.json.password != password:
+	posted_data = request.get_json()
+	if posted_data.password != password:
 		abort(400)
 	client.messages.create(
 		to = toNum,

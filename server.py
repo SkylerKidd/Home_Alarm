@@ -3,19 +3,19 @@ from flask import Flask, jsonify, request
 import os
 
 if 'ACCOUNT_SID' in os.environ:
-	ACCOUNT_SID = os.environ['ACCOUNT_SID']
-	AUTH_TOKEN = os.environ['AUTH_TOKEN']
-	password = os.environ['password']
-	toNum = os.environ["toNum"],
-	fromNum = os.environ["fromNum"],
+	ACCOUNT_SID = str(os.environ['ACCOUNT_SID'])
+	AUTH_TOKEN = str(os.environ['AUTH_TOKEN'])
+	password = str(os.environ['password'])
+	toNum = str(os.environ["toNum"])
+	fromNum = str(os.environ["fromNum"])
 else:
 	config = {}
 	execfile("settings.conf", config)
 	ACCOUNT_SID = config["ACCOUNT_SID"]
 	AUTH_TOKEN = config["AUTH_TOKEN"]
 	password = config['password']
-	toNum = config["toNum"],
-	fromNum = config["fromNum"],
+	toNum = config["toNum"]
+	fromNum = config["fromNum"]
 
 client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
 
@@ -35,14 +35,14 @@ def send_alert(msgAlert):
 
 @app.route('/api/v1.0/alert', methods=['POST'])
 def alert_me():
-    if not request.json or not 'msgAlert' in request.json:
+    if not request.json or not 'msgAlert' in request.json or not 'title' in request.json:
         abort(400)
 	if request.json.password != password:
 		abort(400)
 
 	send_alert(request.json.msgAlert)
 
-    return jsonify({'resp':{'title': request.json['title'],'status': True}})
+    return jsonify({'resp':{'title': request.json['title'],'status': True}}), 201
 
 	#--------------------
 

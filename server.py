@@ -50,7 +50,7 @@ def alert_me():
 			body = request.json.msgAlert
 		)
 		status = 'Success'
-	catch Exception:
+	except Exception:
 		status = Exception.message
 	#os.system("send_alert.py " + str(msgAlert))
 	#send_alert(request.json.msgAlert)

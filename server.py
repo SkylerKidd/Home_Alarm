@@ -35,7 +35,7 @@ def send_alert(msgAlert):
 
 @app.route('/')
 def debug_screen():
-	return ACCOUNT_SID + " " + fromNum
+	return ACCOUNT_SID + " " + fromNum + toNum
 
 @app.route('/api/v1.0/alert', methods=['POST'])
 def alert_me():
@@ -43,15 +43,12 @@ def alert_me():
         abort(400)
 	if request.json.password != password:
 		abort(400)
-	try:
-		client.messages.create(
-			to = toNum,
-			from_ = fromNum,
-			body = request.json.msgAlert
-		)
-		status = 'Success'
-	except Exception:
-		status = Exception.message
+
+	client.messages.create(
+		to = toNum,
+		from_ = fromNum,
+		body = request.json.msgAlert
+	)
 	#os.system("send_alert.py " + str(msgAlert))
 	#send_alert(request.json.msgAlert)
 

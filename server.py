@@ -43,11 +43,11 @@ def alert_me():
 	# 	'status': True
 	# }
 
-	resp = 1
+	erdfgf = 1
 
-	print "Message sent!", resp
+	print "Message sent!", erdfgf
 
-    return resp #jsonify({'resp': resp}), 201
+    return erdfgf #jsonify({'resp': resp}), 201
 #--------------------
 
 

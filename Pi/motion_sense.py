@@ -11,9 +11,6 @@ data = {
     'msgAlert': 'Alert!'
 }
 
-req = urllib2.Request('http://homealarm.herokuapp.com/alert')
-req.add_header('Content-Type', 'application/json')
-
 try:
     print "PIR Module Test (CTRL+C to exit)"
     time.sleep(2)
@@ -21,8 +18,11 @@ try:
 
     while True:
         if GPIO.input(PIR_PIN):
+            req = urllib2.Request('http://homealarm.herokuapp.com/alert')
+            req.add_header('Content-Type', 'application/json')
             response = urllib2.urlopen(req, json.dumps(data))
             print "Motion Detected"
+            print "Msg sent: " + str(data['msgAlert'])
             time.sleep(6)
         else:
             print "Motion Not Detected"

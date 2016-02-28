@@ -38,14 +38,16 @@ def alert_me():
 		body = "Alert!",
 	)
 
-	respo = {
+	resp = {
 		'title': request.json['title'],
 		'status': True
 	}
 
-	print "Message sent!"
+	resp = 1
 
-    return jsonify({'resp': respo}), 201
+	print "Message sent!", resp
+
+    return jsonify({'resp': resp}), 201
 #--------------------
 
 

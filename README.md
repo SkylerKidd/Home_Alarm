@@ -1,7 +1,7 @@
 # Home_Alarm
 
 ## Setup
-See /pi/README.md for Raspberry Pi setup instructions.
+See [this](/Pi/README.md) for Raspberry Pi setup instructions.
 
 Make sure you have [Python 2.7](https://www.python.org/downloads/).
 Run ```pip install -r requirements.txt``` to install dependencies. (Feel free to use a *virtualenv* if you care)
